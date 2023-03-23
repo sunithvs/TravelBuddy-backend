@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import *
 
 
@@ -81,7 +81,7 @@ def blog(request, blog_id):
     Displays a blog post
     """
     context = {
-        "blog": Blog.objects.get(id=blog_id),
+        "blog": get_object_or_404(Blog, id=blog_id),
     }
     return render(request, 'home/blog.html', context)
 
@@ -92,8 +92,15 @@ def destination(request, destination_id):
     Destination page:
     Displays a destination
     """
+    des = Destination.objects.get(id=destination_id)
     context = {
-        "destination": Destination.objects.get(id=destination_id),
+        "destination": des,
+        "dos": des.get_dos(),
+        "donts": des.get_donts(),
+        "blogs": Blog.objects.filter(destination=des),
+        "hotels": Hotel.objects.filter(destination=des),
+        "packages": Package.objects.filter(destinations=des),
+
     }
     return render(request, 'home/destination.html', context)
 

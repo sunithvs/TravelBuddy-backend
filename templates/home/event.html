@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{{ blog.title }}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{% static "css/main.css" %} "/>
+</head>
+<body class=" is-preload
+    ">
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+
+            <!-- Banner -->
+            <section id="banner">
+                <div class="content">
+                    <header>
+                        <h1>{{ event.title }}</h1>
+                    </header>
+                    <p>
+                        {{ event.description }}
+                    </p>
+                    <p>
+                        Location: {{ event.location }}
+                    </p>
+                    <span class="button my-2 ">starting: {{ event.start_date }}</span><br><br>
+                    <span class="button my-2 ">ending: &nbsp;&nbsp;&nbsp;&nbsp;{{ event.end_date }}</span>
+                </div>
+                <span class="image object">
+                    <img src="/media/{{ event.image }}" alt=""/>
+				</span>
+
+            </section>
+
+            <!-- Section -->
+            <section>
+                <div class="box alt">
+                    <div class="row gtr-50 gtr-uniform">
+                        {% for image in event.gallery.all %}
+                            <div class="col-4"><span class="image fit"><img src="/media/{{ image.image }}"
+                                                                            alt=""/></span></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    {% include "home/sidebar.html" %}
+
+</div>
+
+<!-- Scripts -->
+<script src="{% static "js/jquery.min.js" %} "></script>
+<script src="{% static "js/browser.min.js" %} "></script>
+<script src="{% static "js/breakpoints.min.js" %} "></script>
+<script src="{% static "js/util.js" %} "></script>
+<script src="{% static "js/main.js" %} "></script>
+
+</body>
+</html>

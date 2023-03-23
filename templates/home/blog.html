@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Travel BUDDY
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>{{ blog.title }}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{% static "css/main.css" %} "/>
+</head>
+<body class=" is-preload
+    ">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+
+            <!-- Banner -->
+            <section id="banner">
+                <div class="content">
+                    <header>
+                        <h1>{{ blog.title }}</h1>
+                    </header>
+                    <p>
+                        {{ blog.description }}
+                    </p>
+                    <span class="button  ">{{ blog.topics }}</span>
+                </div>
+                <span class="image object">
+                    <img src="/media/{{ blog.image }}" alt=""/>
+				</span>
+
+            </section>
+
+            <!-- Section -->
+            <section>
+
+                <p>
+                    {{ blog.content }}
+                </p>
+
+            </section>
+            <section>
+                <div class="box alt">
+                    <div class="row gtr-50 gtr-uniform">
+                        {% for image in destination.gallery.all %}
+                            <div class="col-4"><span class="image fit"><img src="/media/{{ image.image }}"
+                                                                            alt=""/></span></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+            {% if blogs %}
+                <!-- Section -->
+                <section>
+                    <header class="major">
+                        <h2>Blogs</h2>
+                    </header>
+                    <div class="posts">
+                        {% for blog in blogs %}
+                            <article>
+                                <a href="#" class="image"><img src="/media/{{ blog.image }}" alt=""/></a>
+                                <h3>{{ blog.title }}</h3>
+                                <p>{{ blog.description |truncatechars:80 }}</p>
+                                <ul class="actions">
+                                    <li><a href="#" class="button">More</a></li>
+                                </ul>
+                            </article>
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+            {% if hotels %}
+                <section>
+                    <header class="major">
+                        <h2>Hotels nearby</h2>
+                    </header>
+                    <div class="posts">
+                        {% for hotel in hotels %}
+                            <article>
+                                <a href="#" class="image"><img src="/media/{{ hotel.image }}" alt=""/></a>
+                                <h3>{{ hotel.name }}</h3>
+                                {#                            first 20 characters of desctiption#}
+                                <p>{{ hotel.description|truncatechars:80 }}</p>
+                                {#                            <p>{{ hotel.description  }}</p>#}
+                                <ul class="actions">
+                                    <li><a href="#" class="button">More</a></li>
+                                </ul>
+                            </article>
+
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+            {% if packages %}
+                <section>
+                    <header class="major">
+                        <h2>Packages including </h2>
+                    </header>
+                    <div class="posts">
+                        {% for package in packages %}
+                            <article>
+                                <a href="#" class="image"><img src="/media/{{ package.image }}" alt=""/></a>
+                                <h3>{{ package.title }}</h3>
+                                <p>{{ package.content|truncatechars:80 }}</p>
+                                <ul class="actions">
+                                    <li><a href="#" class="button">More</a></li>
+                                </ul>
+                            </article>
+
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+
+
+        </div>
+    </div>
+
+    {% include "home/sidebar.html" %}
+
+</div>
+
+<!-- Scripts -->
+<script src="{% static "js/jquery.min.js" %} "></script>
+<script src="{% static "js/browser.min.js" %} "></script>
+<script src="{% static "js/breakpoints.min.js" %} "></script>
+<script src="{% static "js/util.js" %} "></script>
+<script src="{% static "js/main.js" %} "></script>
+
+</body>
+</html>

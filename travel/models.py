@@ -4,6 +4,14 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Gallery(models.Model):
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    title = models.CharField(max_length=100)
+    description = models.TextField(default="")
+
+    def __str__(self):
+        return self.title
+
 
 class Traveler(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Traveler')
@@ -33,6 +41,7 @@ class Destination(models.Model):
 
     dos = models.TextField()
     donts = models.TextField()
+    gallery = models.ManyToManyField(Gallery, blank=True)
 
     def __str__(self):
         return self.title
@@ -52,6 +61,7 @@ class Blog(models.Model):
     topics = models.CharField(max_length=100, choices=(
         ('Travel', 'Travel'), ('Food', 'Food'), ('Culture', 'Culture'), ('History', 'History'), ('Nature', 'Nature'),
         ('Other', 'Other')))
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name='blogs', null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -64,6 +74,7 @@ class Hotel(models.Model):
     rating = models.FloatField()
     price_range = models.CharField(max_length=100)
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name='hotels')
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -77,7 +88,7 @@ class Event(models.Model):
     end_date = models.DateTimeField()
     location = models.CharField(max_length=100)
     travel_agent = models.ForeignKey(TravelAgent, on_delete=models.CASCADE, related_name='events')
-
+    gallery = models.ManyToManyField(Gallery, blank=True)
     def __str__(self):
         return self.title
 
@@ -102,3 +113,15 @@ class Booking(models.Model):
 
     def __str__(self):
         return self.traveler.user.username + ' ' + self.hotel.name + ' ' + self.event.title
+
+
+class Package(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    price = models.FloatField()
+    travel_agent = models.ForeignKey(TravelAgent, on_delete=models.CASCADE, related_name='packages')
+    destinations = models.ManyToManyField(Destination, related_name='packages', blank=True)
+
+    def __str__(self):
+        return self.title

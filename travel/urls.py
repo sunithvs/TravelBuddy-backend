@@ -9,7 +9,7 @@ urlpatterns = [
     path('events/', events, name='events'),
     path('destinations/', destinations, name='destinations'),
     path('blogs/', blogs, name='blogs'),
-    path('blog/<int:blog_id>/', blog, name='blog'),
+    path('blogs/<int:blog_id>/', blog, name='blog'),
     path("destinations/<int:destination_id>/", destination, name="destination"),
     path("events/<int:event_id>/", event, name="event"),
 ]
