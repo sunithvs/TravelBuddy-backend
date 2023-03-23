@@ -68,7 +68,8 @@ class Blog(models.Model):
 
 
 class Hotel(models.Model):
-    name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    description = models.TextField()
     address = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=100)
     rating = models.FloatField()
@@ -89,6 +90,7 @@ class Event(models.Model):
     location = models.CharField(max_length=100)
     travel_agent = models.ForeignKey(TravelAgent, on_delete=models.CASCADE, related_name='events')
     gallery = models.ManyToManyField(Gallery, blank=True)
+
     def __str__(self):
         return self.title
 

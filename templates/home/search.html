@@ -71,6 +71,53 @@
                     </div>
                 </section>
             {% endif %}
+          {% if hotels %}
+                <section>
+                    <header class="major">
+                        <h2>hotels</h2>
+                    </header>
+                    <div class="posts">
+                        {% for hotel in hotels %}
+                            <article>
+                                <a href="{% url "hotel" hotel.id %}" class="image"><img
+                                        src="/media/{{ hotel.image }}" alt=""/></a>
+                                <h3>{{ hotel.name }}</h3>
+                                {#                            first 20 characters of desctiption#}
+                                <p>{{ hotel.description|truncatechars:80 }}</p>
+                                {#                            <p>{{ hotel.description  }}</p>#}
+                                <ul class="actions">
+                                    <li><a href="{% url "hotel" destination.id %}" class="button">More</a></li>
+                                </ul>
+                            </article>
+
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+                  {% if packages %}
+                <section>
+                    <header class="major">
+                        <h2>packages</h2>
+                    </header>
+                    <div class="posts">
+                        {% for package in packages %}
+                            <article>
+                                <a href="{% url "package" package.id %}" class="image"><img
+                                        src="/media/{{ package.image }}" alt=""/></a>
+                                <h3>{{ package.name }}</h3>
+                                {#                            first 20 characters of desctiption#}
+                                <p>{{ package.description|truncatechars:80 }}</p>
+                                {#                            <p>{{ package.description  }}</p>#}
+                                <ul class="actions">
+                                    <li><a href="{% url "package" destination.id %}" class="button">More</a></li>
+                                </ul>
+                            </article>
+
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+
             {% if blogs %}
                 <section>
                     <header class="major">

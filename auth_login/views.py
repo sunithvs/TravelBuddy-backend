@@ -9,8 +9,15 @@ from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import ensure_csrf_cookie
-
+from django.contrib.auth.models import Group
 from travel.models import TravelAgent
+
+
+def create_travel_agent_group():
+    try:
+        Group.objects.get(name='TravelAgent')
+    except Group.DoesNotExist:
+        Group.objects.create(name='TravelAgent', )
 
 
 @ensure_csrf_cookie
@@ -112,7 +119,8 @@ def signup_agent(request):
                     user = User.objects.create_user(email=email, password=password, username=username,
                                                     first_name=first_name, last_name=last_name)
                     user.is_staff = True
-                    user.is_superuser = True
+                    Group.objects.get(name='TravelAgent').user_set.add(user)
+
                     user.save()
                     TravelAgent.objects.create(user=user, company_name=company_name, phone_number=phone_number,
                                                address=address, services_offered=services_offered)
@@ -138,3 +146,9 @@ def signup_agent(request):
 def log_out(request):
     logout(request)
     return redirect('/')
+
+
+try:
+    create_travel_agent_group()
+except:
+    pass

@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{{ blog.title }}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{% static "css/main.css" %} "/>
+</head>
+<body class=" is-preload
+    ">
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        {% include "home/header.html" %}
+        <div class="inner">
+
+
+            <!-- Banner -->
+            <section id="banner">
+                <div class="content">
+                    <header>
+                        <h1>{{ package.title }}</h1>
+                    </header>
+                    <p>
+                        {{ package.description }}
+                    </p>
+                    <span class="button my-2 ">Amount: {{ package.price }}</span><br><br>
+                </div>
+                <span class="image object">
+                    <img src="/media/{{ package.image }}" alt=""/>
+				</span>
+
+            </section>
+
+            <!-- Section -->
+            <section>
+                <div class="posts">
+                    {% for object in package.destinations.all %}
+                        <article>
+                            <a href="/destinations/{{ object.id }}" class="image"><img src="/media/{{ object.image }}"
+                                                                         alt=""/></a>
+                            <h3>{{ object.title }}</h3>
+                            <p>{{ object.description |truncatechars:80 }}</p>
+                            <ul class="actions">
+                                <li><a href="/destinations/{{ object.id }}" class="button">More</a></li>
+                            </ul>
+                        </article>
+
+                    {% endfor %}
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    {% include "home/sidebar.html" %}
+
+</div>
+
+<!-- Scripts -->
+<script src="{% static "js/jquery.min.js" %} "></script>
+<script src="{% static "js/browser.min.js" %} "></script>
+<script src="{% static "js/breakpoints.min.js" %} "></script>
+<script src="{% static "js/util.js" %} "></script>
+<script src="{% static "js/main.js" %} "></script>
+
+</body>
+</html>

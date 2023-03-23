@@ -70,7 +70,6 @@ def blogs(request):
                        "aut temporibus dolor veritatis molestiae enim qui vel ",
         "title": "Blogs you can read",
 
-
     }
     return render(request, 'home/list.html', context)
 
@@ -132,6 +131,52 @@ def search(request):
             description__icontains=search_query),
         "blogs": Blog.objects.filter(title__icontains=search_query) | Blog.objects.filter(
             description__icontains=search_query),
+        "packages": Package.objects.filter(title__icontains=search_query) | Package.objects.filter(
+            description__icontains=search_query),
+        "hotels": Hotel.objects.filter(title__icontains=search_query) | Hotel.objects.filter(
+            description__icontains=search_query),
         "search_query": search_query, }
 
     return render(request, 'home/search.html', context)
+
+
+def hotels(request):
+    """
+    Hotels page:
+    Displays a list of all hotels
+    """
+    context = {
+        "objects": Hotel.objects.all(),
+        "heading": "Hotels",
+        "subheading": "Hotels near you",
+        "description": "aut temporibus dolor veritatis molestiae enim qui vel "
+                       "aut temporibus dolor veritatis molestiae enim qui vel ",
+        "title": "Hotels near you",
+    }
+    return render(request, 'home/list.html', context)
+
+
+def packages(request):
+    context = {
+        "objects": Package.objects.all(),
+        "heading": "Packages",
+        "subheading": "Packages near you",
+        "description": "aut temporibus dolor veritatis molestiae enim qui vel "
+                       "aut temporibus dolor veritatis molestiae enim qui vel ",
+        "title": "Packages near you",
+    }
+    return render(request, 'home/list.html', context)
+
+
+def package(request, package_id):
+    context = {
+        "package": Package.objects.get(id=package_id),
+    }
+    return render(request, 'home/package.html', context)
+
+
+def hotel(request, hotel_id):
+    context = {
+        "hotel": Hotel.objects.get(id=hotel_id),
+    }
+    return render(request, 'home/hotel.html', context)

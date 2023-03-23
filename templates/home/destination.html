@@ -20,7 +20,7 @@
 
     <!-- Main -->
     <div id="main">
-    {% include "home/header.html" %}
+        {% include "home/header.html" %}
         <div class="inner">
 
 
@@ -91,11 +91,12 @@
                     <div class="posts">
                         {% for blog in blogs %}
                             <article>
-                                <a href="#" class="image"><img src="/media/{{ blog.image }}" alt=""/></a>
+                                <a href="/blogs/{{ blog.id }}" class="image"><img src="/media/{{ blog.image }}"
+                                                                                  alt=""/></a>
                                 <h3>{{ blog.title }}</h3>
                                 <p>{{ blog.description |truncatechars:80 }}</p>
                                 <ul class="actions">
-                                    <li><a href="#" class="button">More</a></li>
+                                    <li><a href="/blogs/{{ blog.id }}" class="button">More</a></li>
                                 </ul>
                             </article>
                         {% endfor %}

@@ -25,9 +25,9 @@ SECRET_KEY = 'django-insecure-cag@!muz(kv)t31hxk6w3b)^vzt62_n1wo8&@89)ueefs6p4-7
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-cors_allowed_origins = ["https://localhost:8000", "https://api.trebuchet.one", "https://trebuchet.one"]
+cors_allowed_origins = ["https://localhost:8000", "https://api.travelbuddy.one", "https://travelbuddy.one"]
 # Application definition
-CSRF_TRUSTED_ORIGINS = ["https://localhost:8000", "https://api.trebuchet.one", "https://trebuchet.one"]
+CSRF_TRUSTED_ORIGINS = ["https://localhost:8000", "https://api.travelbuddy.one", "https://travelbuddy.one"]
 INSTALLED_APPS = [
     # third party apps
     "jazzmin",
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 
 ]
 
-APPLICATION_NAME = "trebuchet"
+APPLICATION_NAME = "travelbuddy"
 ADMIN_URL = "admin/"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -316,8 +316,4 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
     # Add a language dropdown into the admin
     # "language_chooser": True,
-}
-
-JAZZMIN_UI_TWEAKS = {
-    "theme": "solar",
 }
