@@ -100,11 +100,12 @@
                 <div class="posts">
                     {% for event in events %}
                         <article>
-                            <a href="#" class="image"><img src="/media/{{ event.image }}" alt=""/></a>
+                            <a href="{% url "event" event.id %}" class="image"><img src="/media/{{ event.image }}"
+                                                                                    alt=""/></a>
                             <h3>{{ event.title }}</h3>
                             <p>{{ event.description |truncatechars:80 }}</p>
                             <ul class="actions">
-                                <li><a href="#" class="button">More</a></li>
+                                <li><a href="{% url "event" event.id %}" class="button">More</a></li>
                             </ul>
                         </article>
 
@@ -118,13 +119,13 @@
                 <div class="posts">
                     {% for destination in destinations %}
                         <article>
-                            <a href="#" class="image"><img src="/media/{{ destination.image }}" alt=""/></a>
+                            <a href="{% url "destination" destination.id %}" class="image"><img src="/media/{{ destination.image }}" alt=""/></a>
                             <h3>{{ destination.name }}</h3>
                             {#                            first 20 characters of desctiption#}
                             <p>{{ destination.description|truncatechars:80 }}</p>
                             {#                            <p>{{ destination.description  }}</p>#}
                             <ul class="actions">
-                                <li><a href="#" class="button">More</a></li>
+                                <li><a href="{% url "destination" destination.id %}" class="button">More</a></li>
                             </ul>
                         </article>
 
@@ -138,11 +139,11 @@
                 <div class="posts">
                     {% for blog in blogs %}
                         <article>
-                            <a href="#" class="image"><img src="/media/{{ blog.image }}" alt=""/></a>
+                            <a href="{% url "blog" blog.id %}" class="image"><img src="/media/{{ blog.image }}" alt=""/></a>
                             <h3>{{ blog.title }}</h3>
                             <p>{{ blog.content|truncatechars:80 }}</p>
                             <ul class="actions">
-                                <li><a href="#" class="button">More</a></li>
+                                <li><a href="{% url "blog" blog.id %}" class="button">More</a></li>
                             </ul>
                         </article>
 

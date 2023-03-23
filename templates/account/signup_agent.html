@@ -23,17 +23,38 @@
         <div class="inner">
 
             <section style="display: flex;justify-content: center;align-items: center;flex-direction: column">
-                <h1>Login</h1>
-                <form method="post" action="{% url "login" %}">
+                <h1>Signup</h1>
+                {{ pswderr }}
+                <form method="post" action="{% url "agent_signup" %}">
                     {% csrf_token %}
                     <div class="row gtr-uniform" style="display: flex;justify-content: center;align-items: center;">
                         <div class="col-8 col-12-xsmall">
-                            <input type="email" name="email" id="demo-name" value="" placeholder="Email"/>
+                            <input required type="text" name="name" id="demo-name" value="" placeholder="agent name"/>
                         </div>
                         <div class="col-8 col-12-xsmall">
-                            <input type="password" name="password" id="demo-email" value="" placeholder="password"/>
+                            <input required type="text" name="company_name" id="demo-name" value=""
+                                   placeholder="company name"/>
                         </div>
-
+                        <div class="col-8 col-12-xsmall">
+                            <input required type="text" name="phone_number" id="demo-name" value=""
+                                   placeholder="phone number"/>
+                        </div>
+                        <div class="col-8 col-12-xsmall">
+                            <input required type="text" name="address" id="demo-name" value="" placeholder="address"/>
+                        </div>
+                        <div class="col-8 col-12-xsmall">
+                            <input required type="text" name="services_offered" id="demo-name" value=""
+                                   placeholder="services offered"/>
+                        </div>
+                        <div class="col-8 col-12-xsmall">
+                            <input required type="email" name="email" id="demo-email" value="" placeholder="Email"/>
+                        </div>
+                        <div class="col-8 col-12-xsmall">
+                            <input required type="password" name="password1" value="" placeholder="password"/>
+                        </div>
+                        <div class="col-8 col-12-xsmall">
+                            <input required type="password" name="password2" value="" placeholder="password confirm"/>
+                        </div>
                         <div class="col-8">
                             <ul class="actions" style="display: flex;justify-content: center;align-items: center;">
                                 <li><input type="submit" value="login" class="primary"/></li>

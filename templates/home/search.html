@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Travel BUDDY
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Search</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{% static "css/main.css" %} "/>
+</head>
+<body class=" is-preload
+    ">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+            <!-- Header -->
+        <section>
+            <h2>Search results for {{ search_query }}</h2>
+
+        </section>
+            <!-- Section -->
+            {% if events %}
+                <section>
+                    <header class="major">
+                        <h2>Events</h2>
+                    </header>
+                    <div class="posts">
+                        {% for event in events %}
+                            <article>
+                                <a href="{% url "event" event.id %}" class="image"><img src="/media/{{ event.image }}"
+                                                                                        alt=""/></a>
+                                <h3>{{ event.title }}</h3>
+                                <p>{{ event.description |truncatechars:80 }}</p>
+                                <ul class="actions">
+                                    <li><a href="{% url "event" event.id %}" class="button">More</a></li>
+                                </ul>
+                            </article>
+
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+            {% if destinations %}
+                <section>
+                    <header class="major">
+                        <h2>Destinations</h2>
+                    </header>
+                    <div class="posts">
+                        {% for destination in destinations %}
+                            <article>
+                                <a href="{% url "destination" destination.id %}" class="image"><img
+                                        src="/media/{{ destination.image }}" alt=""/></a>
+                                <h3>{{ destination.name }}</h3>
+                                {#                            first 20 characters of desctiption#}
+                                <p>{{ destination.description|truncatechars:80 }}</p>
+                                {#                            <p>{{ destination.description  }}</p>#}
+                                <ul class="actions">
+                                    <li><a href="{% url "destination" destination.id %}" class="button">More</a></li>
+                                </ul>
+                            </article>
+
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+            {% if blogs %}
+                <section>
+                    <header class="major">
+                        <h2>Blogs</h2>
+                    </header>
+                    <div class="posts">
+                        {% for blog in blogs %}
+                            <article>
+                                <a href="{% url "blog" blog.id %}" class="image"><img src="/media/{{ blog.image }}"
+                                                                                      alt=""/></a>
+                                <h3>{{ blog.title }}</h3>
+                                <p>{{ blog.content|truncatechars:80 }}</p>
+                                <ul class="actions">
+                                    <li><a href="{% url "blog" blog.id %}" class="button">More</a></li>
+                                </ul>
+                            </article>
+
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+
+        </div>
+    </div>
+
+    {% include "home/sidebar.html" %}
+
+</div>
+
+<!-- Scripts -->
+<script src="{% static "js/jquery.min.js" %} "></script>
+<script src="{% static "js/browser.min.js" %} "></script>
+<script src="{% static "js/breakpoints.min.js" %} "></script>
+<script src="{% static "js/util.js" %} "></script>
+<script src="{% static "js/main.js" %} "></script>
+
+</body>
+</html>

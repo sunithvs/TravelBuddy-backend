@@ -115,3 +115,22 @@ def event(request, event_id):
         "event": Event.objects.get(id=event_id),
     }
     return render(request, 'home/event.html', context)
+
+
+def search(request):
+    """
+    Search page:
+    Displays search results
+    """
+    search_query = request.GET.get('q', '')
+    # search in title ,description
+    context = {
+        "destinations": Destination.objects.filter(title__icontains=search_query) | Destination.objects.filter(
+            description__icontains=search_query),
+        "events": Event.objects.filter(title__icontains=search_query) | Event.objects.filter(
+            description__icontains=search_query),
+        "blogs": Blog.objects.filter(title__icontains=search_query) | Blog.objects.filter(
+            description__icontains=search_query),
+        "search_query": search_query, }
+
+    return render(request, 'home/search.html', context)

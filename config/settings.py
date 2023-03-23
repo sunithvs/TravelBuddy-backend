@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     "jazzmin",
     "rest_framework",
     'drf_yasg',  # swagger ui
-
+    'allauth',
+    'allauth.account',
     # django apps
     'django.contrib.admin',
     'django.contrib.auth',

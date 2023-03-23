@@ -2,7 +2,7 @@
 travel/urls.py
 """
 from django.urls import path, include
-from .views import index, events, destinations, blogs, blog, destination, event
+from .views import index, events, destinations, blogs, blog, destination, event, search
 
 urlpatterns = [
     path('', index, name='index'),
@@ -12,4 +12,6 @@ urlpatterns = [
     path('blogs/<int:blog_id>/', blog, name='blog'),
     path("destinations/<int:destination_id>/", destination, name="destination"),
     path("events/<int:event_id>/", event, name="event"),
+    path("search", search, name="search"),
+
 ]
