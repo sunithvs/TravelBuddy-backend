@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 
     # local apps
     "home",
+    "auth_login",
+    "travel"
 
 ]
 
