@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 from travel.models import TravelAgent
@@ -136,9 +136,5 @@ def signup_agent(request):
 
 @login_required
 def log_out(request):
-    if request.method == "POST":
-        logout(request)
-        url = '/?' + request.META['QUERY_STRING']
-        return HttpResponseRedirect(url)
-
-    return render(request, template_name="account/logout.html")
+    logout(request)
+    return redirect('/')

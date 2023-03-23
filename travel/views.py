@@ -70,6 +70,7 @@ def blogs(request):
                        "aut temporibus dolor veritatis molestiae enim qui vel ",
         "title": "Blogs you can read",
 
+
     }
     return render(request, 'home/list.html', context)
 

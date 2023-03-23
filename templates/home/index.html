@@ -20,6 +20,7 @@
 
     <!-- Main -->
     <div id="main">
+        {% include "home/header.html" %}
         <div class="inner">
 
 
@@ -119,7 +120,8 @@
                 <div class="posts">
                     {% for destination in destinations %}
                         <article>
-                            <a href="{% url "destination" destination.id %}" class="image"><img src="/media/{{ destination.image }}" alt=""/></a>
+                            <a href="{% url "destination" destination.id %}" class="image"><img
+                                    src="/media/{{ destination.image }}" alt=""/></a>
                             <h3>{{ destination.name }}</h3>
                             {#                            first 20 characters of desctiption#}
                             <p>{{ destination.description|truncatechars:80 }}</p>
