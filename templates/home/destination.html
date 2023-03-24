@@ -133,11 +133,12 @@
                     <div class="posts">
                         {% for package in packages %}
                             <article>
-                                <a href="#" class="image"><img src="/media/{{ package.image }}" alt=""/></a>
+                                <a href="{% url 'package' package.id %}" class="image"><img
+                                        src="/media/{{ package.image }}" alt=""/></a>
                                 <h3>{{ package.title }}</h3>
                                 <p>{{ package.content|truncatechars:80 }}</p>
                                 <ul class="actions">
-                                    <li><a href="#" class="button">More</a></li>
+                                    <li><a href="{% url 'package' package.id %}" class="button">More</a></li>
                                 </ul>
                             </article>
 

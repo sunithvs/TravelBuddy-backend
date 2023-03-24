@@ -15,7 +15,7 @@ urlpatterns = [
     path("search", search, name="search"),
     path("hotels", hotels, name="hotels"),
     path("hotels/<int:hotel_id>/", hotel, name="hotel"),
-    path("packages", packages, name="packages"),
+    path("packages/", packages, name="packages"),
     path("packages/<int:package_id>/", package, name="package"),
 
 
