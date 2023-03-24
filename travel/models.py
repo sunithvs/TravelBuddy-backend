@@ -78,7 +78,7 @@ class Hotel(models.Model):
     image = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 class Event(models.Model):
@@ -114,7 +114,7 @@ class Booking(models.Model):
     total_price = models.FloatField()
 
     def __str__(self):
-        return self.traveler.user.username + ' ' + self.hotel.name + ' ' + self.event.title
+        return self.traveler.user.username + ' ' + self.hotel.title + ' ' + self.event.title
 
 
 class Package(models.Model):

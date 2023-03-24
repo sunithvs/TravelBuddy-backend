@@ -42,6 +42,7 @@ def events(request):
 
     return render(request, 'home/list.html', context)
 
+
 @login_required(login_url='login')
 def destinations(request):
     """
@@ -57,6 +58,7 @@ def destinations(request):
         "title": "Destinations near you",
     }
     return render(request, 'home/list.html', context)
+
 
 @login_required(login_url='login')
 def blogs(request):
@@ -120,6 +122,7 @@ def event(request, event_id):
     }
     return render(request, 'home/event.html', context)
 
+
 @login_required(login_url='login')
 def search(request):
     """
@@ -143,6 +146,7 @@ def search(request):
 
     return render(request, 'home/search.html', context)
 
+
 @login_required(login_url='login')
 def hotels(request):
     """
@@ -159,6 +163,7 @@ def hotels(request):
     }
     return render(request, 'home/list.html', context)
 
+
 @login_required(login_url='login')
 def packages(request):
     context = {
@@ -171,12 +176,14 @@ def packages(request):
     }
     return render(request, 'home/list.html', context)
 
+
 @login_required(login_url='login')
 def package(request, package_id):
     context = {
         "package": Package.objects.get(id=package_id),
     }
     return render(request, 'home/package.html', context)
+
 
 @login_required(login_url='login')
 def hotel(request, hotel_id):
