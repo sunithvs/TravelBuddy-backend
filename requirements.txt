@@ -8,9 +8,12 @@ cryptography==38.0.4
 defusedxml==0.7.1
 Django==4.1.4
 django-allauth==0.51.0
+django-ckeditor==6.5.1
 django-filter==22.1
 django-jazzmin==2.6.0
+django-js-asset==2.0.0
 djangorestframework==3.14.0
+djangorestframework-simplejwt==5.2.2
 drf-yasg==1.21.4
 idna==3.4
 inflection==0.5.1

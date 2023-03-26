@@ -30,7 +30,9 @@
                         <h1>{{ blog.title }}</h1>
                     </header>
                     <p>
+{#                        render blog.description as html#}
                         {{ blog.description }}
+
                     </p>
                     <span class="button  ">{{ blog.topics }}</span>
                 </div>
@@ -44,7 +46,7 @@
             <section>
 
                 <p>
-                    {{ blog.content }}
+                    {{ blog.content |safe }}
                 </p>
 
             </section>

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -56,7 +57,7 @@ class Destination(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(default="lorem ipsum")
-    content = models.TextField()
+    content = RichTextField()
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     topics = models.CharField(max_length=100, choices=(
         ('Travel', 'Travel'), ('Food', 'Food'), ('Culture', 'Culture'), ('History', 'History'), ('Nature', 'Nature'),
@@ -76,6 +77,7 @@ class Hotel(models.Model):
     price_range = models.CharField(max_length=100)
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name='hotels')
     image = models.ImageField(upload_to='images/', blank=True, null=True)
+    location = models.CharField(max_length=100)
 
     def __str__(self):
         return self.title
