@@ -14,7 +14,7 @@ def index(request):
     Displays top 3 blogs
     """
     context = {
-        "events": Event.objects.all(),
+        "events": Event.objects.all()[0:3],
         "destinations": Destination.objects.all()[0:3],
         "blogs": Blog.objects.all()[0:3],
     }
@@ -33,11 +33,7 @@ def events(request):
         "objects": Event.objects.all(),
         "heading": "Events",
         "subheading": "Events near you",
-        "description": "aut temporibus dolor veritatis molestiae enim qui vel "
-                       "aut temporibus dolor veritatis molestiae enim qui vel "
-                       "aut temporibus dolor veritatis molestiae enim qui vel "
-                       "aut temporibus dolor veritatis molestiae enim qui vel "
-                       "aspernatur commodi sunt quod veniam voluptas et",
+        "description": "change this content in views.py",
     }
 
     return render(request, 'home/list.html', context)
@@ -53,8 +49,7 @@ def destinations(request):
         "objects": Destination.objects.all(),
         "heading": "Destinations",
         "subheading": "Destinations near you",
-        "description": "aut temporibus dolor veritatis molestiae enim qui vel "
-                       "aut temporibus dolor veritatis molestiae enim qui vel ",
+        "description": "change this content in views.py",
         "title": "Destinations near you",
     }
     return render(request, 'home/list.html', context)
@@ -184,10 +179,3 @@ def package(request, package_id):
     }
     return render(request, 'home/package.html', context)
 
-
-@login_required(login_url='login')
-def hotel(request, hotel_id):
-    context = {
-        "hotel": Hotel.objects.get(id=hotel_id),
-    }
-    return render(request, 'home/hotel.html', context)

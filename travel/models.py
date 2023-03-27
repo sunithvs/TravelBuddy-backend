@@ -77,7 +77,8 @@ class Hotel(models.Model):
     price_range = models.CharField(max_length=100)
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name='hotels')
     image = models.ImageField(upload_to='images/', blank=True, null=True)
-    location = models.CharField(max_length=100)
+    location = models.CharField(max_length=100, default="")
+    location_id = models.CharField(max_length=200, default="")
 
     def __str__(self):
         return self.title

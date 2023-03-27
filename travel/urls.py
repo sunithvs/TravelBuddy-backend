@@ -14,7 +14,6 @@ urlpatterns = [
     path("events/<int:event_id>/", event, name="event"),
     path("search", search, name="search"),
     path("hotels", hotels, name="hotels"),
-    path("hotels/<int:hotel_id>/", hotel, name="hotel"),
     path("packages/", packages, name="packages"),
     path("packages/<int:package_id>/", package, name="package"),
 

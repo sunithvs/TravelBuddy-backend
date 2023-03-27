@@ -143,7 +143,7 @@
                         <article>
                             <a href="{% url "blog" blog.id %}" class="image"><img src="/media/{{ blog.image }}" alt=""/></a>
                             <h3>{{ blog.title }}</h3>
-                            <p>{{ blog.content|truncatechars:80 }}</p>
+                            <p>{{ blog.description|truncatechars:80 }}</p>
                             <ul class="actions">
                                 <li><a href="{% url "blog" blog.id %}" class="button">More</a></li>
                             </ul>
@@ -152,6 +152,14 @@
                     {% endfor %}
                 </div>
             </section>
+{#            <section>#}
+{#                <iframe#}
+{#                        allow="microphone;"#}
+{#                        width="350"#}
+{#                        height="430"#}
+{#                        src="https://console.dialogflow.com/api-client/demo/embedded/0756fd03-3595-4e78-81ea-6d235744da78">#}
+{#                </iframe>#}
+{#            </section>#}
 
 
         </div>
