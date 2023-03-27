@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # local apps
-    "home",
     "auth_login",
     "travel",
     "ckeditor"
