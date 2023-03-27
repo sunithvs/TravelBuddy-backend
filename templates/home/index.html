@@ -143,7 +143,7 @@
                         <article>
                             <a href="{% url "blog" blog.id %}" class="image"><img src="/media/{{ blog.image }}" alt=""/></a>
                             <h3>{{ blog.title }}</h3>
-                            <p>{{ blog.content|truncatechars:80 }}</p>
+                            <p>{{ blog.description|truncatechars:80 }}</p>
                             <ul class="actions">
                                 <li><a href="{% url "blog" blog.id %}" class="button">More</a></li>
                             </ul>
